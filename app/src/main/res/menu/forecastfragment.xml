@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:App="http://schemas.android.com/tools">
+    <item android:id="@+id/settings_id"
+        android:icon="@drawable/twitter_e"
+        android:title="twitter"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/about_us_id"
+        android:icon="@drawable/read_e"
+        android:title="About Us"
+        app:showAsAction="always" />
+    <!--<menu>-->
+    <item android:id="@+id/action_refresh"
+        android:title="@string/action_refresh"
+        app:showAsAction="never"/>
+
+
+    <item android:id="@+id/settings_click"
+        android:title="Settings"
+        android:icon="@drawable/twitter_e"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_map"
+        android:title="Open in Map"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/contact_us_3"
+        android:title="Exit"
+        android:icon="@drawable/twitter_e"
+        app:showAsAction="never" />
+</menu>
