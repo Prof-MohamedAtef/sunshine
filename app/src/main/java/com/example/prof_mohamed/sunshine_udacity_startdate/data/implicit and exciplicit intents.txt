@@ -1,0 +1,34 @@
+An implicit intent specifies an action that can invoke any app on the device able to perform the action. Using an implicit intent is useful when your app cannot perform the action, but other apps probably can and you'd like the user to pick which app to use.
+
+For example, if you have content that you want the user to share with other people, create an intent with the ACTION_SEND action and add extras that specify the content to share. When you call startActivity() with that intent, the user can pick an app through which to share the content.
+
+Caution: It's possible that a user won't have any apps that handle the implicit intent you send to startActivity(). 
+If that happens, the call fails and your app crashes. 
+To verify that an activity will receive the intent, call resolveActivity() on your Intent object. 
+If the result is non-null, there is at least one app that can handle the intent and it's safe to call startActivity(). 
+If the result is null, do not use the intent and, if possible, you should disable the feature that issues the intent. 
+The following example shows how to verify that the intent resolves to an activity.
+This example doesn't use a URI, but the intent's data type is declared to specify the content carried by the extras.
+
+
+// Create the text message with a string
+Intent sendIntent = new Intent();
+sendIntent.setAction(Intent.ACTION_SEND);
+sendIntent.putExtra(Intent.EXTRA_TEXT, textMessage);
+sendIntent.setType("text/plain");
+
+// Verify that the intent will resolve to an activity
+if (sendIntent.resolveActivity(getPackageManager()) != null) {
+    startActivity(sendIntent);
+}
+//-----------------------------------------------------------------------------
+An explicit intent is one that you use to launch a specific app component, such as a particular activity or service in your app. To create an explicit intent, define the component name for the Intent object—all other intent properties are optional.
+
+For example, if you built a service in your app, named DownloadService, designed to download a file from the web, 
+you can start it with the following code:
+
+// Executed in an Activity, so 'this' is the Context
+// The fileUrl is a string URL, such as "http://www.example.com/image.png"
+Intent downloadIntent = new Intent(this, DownloadService.class);
+downloadIntent.setData(Uri.parse(fileUrl));
+startService(downloadIntent);
